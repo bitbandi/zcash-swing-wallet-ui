@@ -311,6 +311,14 @@ public class ZCashUI
                 }
             }
 
+            CommandLineParameters.parse(argv);
+
+            if (CommandLineParameters.isHelp())
+            {
+                CommandLineParameters.displayHelp();
+                System.exit(0);
+            }
+
             /////////////////////////////////////////////////////
             ZCashUI ui = new ZCashUI();
             ui.setVisible(true);

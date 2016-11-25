@@ -33,6 +33,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -55,6 +57,12 @@ public class CommandExecutor
 	{
 		final StringBuffer result = new StringBuffer();
 		
+		String datadir = CommandLineParameters.getDataDir();
+		if (datadir != null) {
+			List<String> a = Arrays.asList(args);
+			a.add(1, "-datadir=" + datadir);
+			args = a.toArray(new String[0]);
+		}
 		Runtime rt = Runtime.getRuntime();
 		Process proc = rt.exec(args);
 
